@@ -1,33 +1,313 @@
+@import url('https://rsms.me/inter/inter-ui.css');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,300,400,500,600,700,800,900&display=swap');
+
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+body {
+    font-size: 18px;
+    font-family: 'Inter UI', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #111;
+}
+
+a {
+    color: #000;
+    text-decoration: none;
+}
+
 .App {
-  text-align: center;
+    width: 100%;
+    margin: 0 auto;
+    background-color: #fefefe;
+    color: #555;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+nav {
+    background: #111;
+    width: 180px;
+    height: 100vh;
+    position: fixed;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+nav li {
+    display: block;
+    padding: 0.5em 1.6em;
+    margin: 0;
 }
 
-.App-link {
-  color: #61dafb;
+.nav-brand {
+    text-align: center;
+    padding: 3em 0;
+    font-family: 'Montserrat', sans-serif;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.nav-brand a,
+.nav-footer,
+.nav-footer a {
+    color: #aaa;
+}
+
+.nav-footer {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    padding: 1.6em 0;
+}
+
+.nav-copyright {
+    font-size: 0.8em;
+    padding: 1.2em 0 0 0;
+}
+
+main {
+    padding: 2em 4em 8em;
+    margin: 0 auto;
+    margin-left: 180px;
+    min-height: 100vh;
+}
+
+main a {
+    font-weight: 600;
+}
+
+main p {
+    margin-bottom: 0.5em;
+}
+
+h1 {
+    font-size: 3em;
+    margin: 0.75em 0;
+    font-weight: 800;
+    color: #111;
+}
+
+h2 {
+    font-size: 2em;
+    margin: 1em 0;
+    font-weight: 800;
+}
+
+h3 {
+    font-size: 1.5em;
+    margin: 1em 0;
+    font-weight: 600;
+}
+
+h4 {
+    font-size: 1em;
+}
+
+p {
+    line-height: 1.4em;
+}
+
+ul {
+    list-style-type: none;
+}
+
+li {
+    display: inline;
+    margin-right: 1em;
+}
+
+li a {
+    text-decoration: none;
+    color: white;
+    transition: 0.2s all;
+    /* font-size: 1.2em; */
+}
+
+li a:hover {
+    color: #555;
+}
+
+h2 {
+    /* text-transform: uppercase; */
+}
+
+code {
+    background: #eee;
+    padding: 2px 5px;
+    color: #9c5a06;
+}
+
+.question {
+    margin-bottom: 2em;
+}
+
+.fa,
+.fas {
+    font-size: 1.1em;
+    padding-right: 1em;
+}
+
+.fab {
+    font-size: 1.7em;
+}
+
+.fab:hover {
+    color: #555;
+}
+
+.main-container {
+    max-width: 59rem;
+    margin: 0 auto;
+}
+
+/******** HOME ********/
+
+#home {
+    margin: 0 auto;
+    margin-left: 180px;
+    height: 100vh;
+    padding: 5em 3em;
+}
+
+.main-container.home {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+}
+
+.home-info {
+    width: 57%;
+}
+
+.home-info h1 {
+    margin: 0.4em 0;
+}
+
+.desc {
+    font-weight: 600;
+    color: #444;
+    font-size: 1.3em;
+}
+
+.home-img {
+    width: 40%;
+}
+
+.home-img img {
+    width: 100%;
+}
+
+/******** REPORT ********/
+
+.main-container.report {
+    display: flex;
+    justify-content: space-between;
+}
+
+.report-github {
+    width: 37%;
+}
+
+.report-text {
+    width: 60%;
 }
