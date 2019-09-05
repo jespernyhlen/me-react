@@ -33,7 +33,7 @@ class App extends Component {
                         </ul>
                         <div className='nav-footer'>
                             <div className='nav-contacts'>
-                                <a href='https://github.com'>
+                                <a href='https://github.com/jespernyhlen/me-react'>
                                     <i className='fab fa-github-square'></i>
                                 </a>
                             </div>

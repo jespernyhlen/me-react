@@ -8,7 +8,7 @@ class Report extends Component {
         this.state = {
             // questions: [],
             // kmom: props.match.params.kmom,
-            githubURL: 'https://github.com/',
+            githubURL: 'https://github.com/jespernyhlen/me-react',
             readmeMarkdown: ''
         };
         console.log(props);
