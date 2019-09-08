@@ -25,7 +25,7 @@ class App extends Component {
                                 </Link>
                             </li>
                             <li>
-                                <Link to='/reports/week/kmom01'>
+                                <Link to='/reports/week/1'>
                                     <i className='fas fa-address-card'></i>Vecka
                                     1
                                 </Link>
@@ -44,7 +44,11 @@ class App extends Component {
                     </nav>
 
                     <Route exact path='/' component={Me} />
-                    <Route path='/reports/week/:kmom' component={Report} />
+                    <Route
+                        exact
+                        path='/reports/week/:kmom'
+                        component={Report}
+                    />
                 </div>
             </Router>
         );
