@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
 import Readme from '../README.md';
+import ReportTwo from './ReportTwo.md';
+
 import ReactMarkdown from 'react-markdown';
+
+const kmom = {
+    '1': Readme,
+    '2': ReportTwo
+};
 
 class Report extends Component {
     constructor(props) {
         super(props);
+        let location = this.props.location.pathname.split('/')[3];
         this.state = {
-            // questions: [],
-            // kmom: props.match.params.kmom,
+            // // questions: [],
+            kmom: location,
             githubURL: 'https://github.com/jespernyhlen/me-react',
             readmeMarkdown: ''
         };
@@ -15,38 +23,15 @@ class Report extends Component {
     }
 
     componentDidMount() {
-        fetch(Readme)
+        fetch(kmom[this.state.kmom])
             .then(res => res.text())
             .then(text => this.setState({ readmeMarkdown: text }));
-        // let that = this;
-        // fetch('https://me-api.jsramverk.me/reports/' + this.state.kmom)
-        //     .then(function(response) {
-        //         return response.json();
-        //     })
-        //     .then(function(result) {
-        //         that.setState({
-        //             questions: result.data
-        //         });
-        //         console.log(result.data);
-        //     });
+        console.log('eheeej');
     }
 
     render() {
-        // const renderedQuestions = this.state.questions.map(
-        //     (question, index) => {
-        //         return (
-        //             <div className='question' key={index}>
-        //                 <p>
-        //                     <strong>{question.question}</strong>
-        //                 </p>
-        //                 <p>{question.answer}</p>
-        //             </div>
-        //         );
-        //     }
-        // );
-
         return (
-            <main>
+            <main id='report'>
                 <div className='main-container report'>
                     <div className='report-text'>
                         {/* <h1>Readme (English)</h1> */}

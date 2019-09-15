@@ -178,7 +178,7 @@ main p {
 }
 
 h1 {
-    font-size: 3em;
+    font-size: 2.5em;
     margin: 0.75em 0;
     font-weight: 800;
     color: #111;
@@ -217,6 +217,7 @@ li a {
     text-decoration: none;
     color: white;
     transition: 0.2s all;
+    font-size: 1rem;
     /* font-size: 1.2em; */
 }
 
@@ -232,6 +233,10 @@ code {
     background: #eee;
     padding: 2px 5px;
     color: #9c5a06;
+}
+
+.center {
+    text-align: center;
 }
 
 .question {
@@ -259,7 +264,9 @@ code {
 
 /******** HOME ********/
 
-#home {
+#home,
+#register,
+#report {
     margin: 0 auto;
     margin-left: 180px;
     height: 100vh;
@@ -310,4 +317,284 @@ code {
 
 .report-text {
     width: 60%;
+}
+
+/********* FORM ********/
+
+.main-container.register {
+    max-width: 50%;
+}
+
+form {
+    max-width: 380px;
+    margin: 0 auto;
+}
+
+.form-group {
+    padding: 0.5rem 0;
+    height: 6rem;
+}
+
+.form-group.btns {
+    display: flex;
+    justify-content: space-between;
+    height: auto;
+    margin-top: 1.5rem;
+}
+
+.form-group input[type='text'],
+.form-group input[type='password'],
+.form-group input[type='email'],
+.form-group input[type='date'] {
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 2px solid #ddd;
+    width: 100%;
+    margin: 0.3rem 0;
+}
+
+.form-control {
+    background: #fff;
+}
+
+.form-control.is-invalid {
+    border: 2px solid red !important;
+}
+
+.invalid-feedback {
+    font-size: 0.8rem;
+    color: red;
+}
+
+.btn {
+    border-radius: 7px;
+    border: 1px solid #eee;
+    cursor: pointer;
+    color: #ffffff;
+    padding: 0.8rem 2rem;
+    width: 10rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-shadow: 0.3px 0.3px 0.3px #00000075;
+    transition: 0.2s all;
+}
+
+.btn.register {
+    background-color: #47a2da;
+}
+
+.btn.register:hover {
+    background-color: #1f85c3;
+}
+
+.btn.reset {
+    background: #f44336d4;
+}
+
+.btn.reset:hover {
+    background: #e4372ae3;
+}
+
+/******** DATEPICKER *******/
+
+.date-picker {
+    position: relative;
+    width: 100%;
+    cursor: pointer;
+}
+
+.date-picker:hover {
+    background: #f3f3f3;
+}
+
+.date-picker .selected-date {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+}
+
+.date-picker .dates {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    margin-top: 0.3rem;
+    border-radius: 4px;
+    border: 2px solid #4753542e;
+}
+
+.date-picker .dates.active {
+    display: block;
+}
+.selected-date {
+    cursor: pointer;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'),
+        linear-gradient(to bottom, #ffffff 0%, #fff 100%);
+    background-repeat: no-repeat, repeat;
+    background-position: right 0.7em top 50%, 0 0;
+    background-size: 0.65em auto, 100%;
+}
+
+.datepicker-active {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    background-image: url('https://c7.uihere.com/icons/180/404/874/arrow-up-33ad4bd128dab0fede0c19dbe82a24c8.png'),
+        linear-gradient(to bottom, #ffffff 0%, #fff 100%);
+    background-repeat: no-repeat, repeat;
+    background-position: right 0.4em top 50%, 0 0;
+    background-size: 1.1em auto, 100%;
+    /* 'plain' styling */
+}
+
+.date-picker .dates .months {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #eee;
+}
+
+.date-picker .dates .months .arrows {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #313131;
+    font-size: 20px;
+}
+
+.date-picker .dates .months .arrows:hover {
+    background-color: #f3f3f3;
+}
+
+.date-picker .dates .months .arrows:active {
+    background-color: #00ca85;
+}
+
+.date-picker .dates .days {
+    height: 200px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    padding: 1px;
+}
+
+.date-picker .dates .days .day {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #313131;
+}
+
+.date-picker .dates .days .day.selected {
+    background-color: #90d4ffc9;
+}
+
+.form-control.date {
+    display: block;
+    font-size: 1.2rem;
+    line-height: 1.4;
+    padding: 0.6em 1.4em 0.5em 0.8em;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    border: 1px solid #fff;
+    border-radius: 0;
+    cursor: pointer;
+    box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'),
+        linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%);
+    background-repeat: no-repeat, repeat;
+    background-position: right 0.7em top 50%, 0 0;
+    background-size: 0.65em auto, 100%;
+}
+
+.day:focus {
+    outline: 1px solid #90d4ffc9;
+}
+
+@media screen and (max-width: 991px) {
+    .nav-brand {
+        display: none;
+    }
+
+    nav {
+        background: #111;
+        width: 100vw;
+        height: 60px;
+        position: fixed;
+    }
+
+    nav ul {
+        display: flex;
+        justify-content: center;
+    }
+
+    nav li {
+        display: block;
+        padding: 0.5em 1.6em;
+        margin: 0;
+        line-height: 40px;
+    }
+
+    .nav-footer {
+        display: none;
+    }
+
+    #home,
+    #register,
+    #report {
+        margin: 0 auto;
+        margin-left: 0;
+        padding: 5em 3em;
+    }
+
+    .main-container.register {
+        max-width: 90%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    nav li a i {
+        display: none !important;
+    }
+
+    .main-container.home,
+    .main-container.report,
+    .main-container.about {
+        display: block;
+        top: 0;
+        transform: translateY(0);
+        -webkit-transform: translateY(0);
+    }
+
+    .home-img,
+    .home-info,
+    .report-text,
+    .report-github {
+        width: 100%;
+    }
+
+    #home,
+    #register,
+    #report {
+        padding: 5em 1em;
+    }
 }
