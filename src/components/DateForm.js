@@ -4,6 +4,7 @@ class DateForm extends Component {
     constructor(props) {
         super(props);
         let date = new Date();
+        date.setFullYear(date.getFullYear() - 18);
 
         this.state = {
             datePickerActive: false,
@@ -81,7 +82,7 @@ class DateForm extends Component {
 
     chooseYear() {
         let min = 1900,
-            max = new Date().getFullYear();
+            max = new Date().getFullYear() - 18;
 
         const options = [];
 

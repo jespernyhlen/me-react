@@ -46,6 +46,8 @@ class Register extends Component {
 
         if (validated === true) {
             alert('Tillfälligt meddelande, din registrering lyckades.');
+            console.log(validated);
+            this.registerUser();
             this.setState(initialState());
         }
         if (!validated) {
@@ -59,6 +61,25 @@ class Register extends Component {
             yearError: validated.yearError
         });
     };
+
+    registerUser() {
+        fetch('https://me-api.jespernyhlenjs.me/register', {
+            method: 'post',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                firstname: this.state.name,
+                lastname: this.state.lastName,
+                email: this.state.email,
+                birthday: this.state.year,
+                password: this.state.password
+            })
+        })
+            .then(res => res.json())
+            .then(data => console.log(data))
+            .catch(err => console.log(err));
+
+        console.log('Feeetching done');
+    }
 
     handleReset = e => {
         e.preventDefault();

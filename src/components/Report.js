@@ -22,11 +22,28 @@ class Report extends Component {
         console.log(props);
     }
 
+    // componentDidMount() {
+    //     fetch(kmom[this.state.kmom])
+    //         .then(res => res.text())
+    //         .then(text => this.setState({ readmeMarkdown: text }));
+    //     console.log('eheeej');
+    // }
+
     componentDidMount() {
-        fetch(kmom[this.state.kmom])
-            .then(res => res.text())
-            .then(text => this.setState({ readmeMarkdown: text }));
-        console.log('eheeej');
+        let that = this;
+
+        fetch(
+            'https://me-api.jespernyhlenjs.me/reports/week/' + this.state.kmom
+        )
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(result) {
+                console.log(result.data);
+                that.setState({
+                    readmeMarkdown: result.data.text
+                });
+            });
     }
 
     render() {

@@ -266,7 +266,8 @@ code {
 
 #home,
 #register,
-#report {
+#report,
+#login {
     margin: 0 auto;
     margin-left: 180px;
     height: 100vh;
@@ -560,7 +561,8 @@ form {
 
     #home,
     #register,
-    #report {
+    #report,
+    #login {
         margin: 0 auto;
         margin-left: 0;
         padding: 5em 3em;
@@ -594,7 +596,8 @@ form {
 
     #home,
     #register,
-    #report {
+    #report,
+    #login {
         padding: 5em 1em;
     }
 }

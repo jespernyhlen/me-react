@@ -5,24 +5,26 @@ class Me extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            // name: '',
-            // description: '',
-            // message: ''
+            name: '',
+            description: '',
+            text: ''
         };
     }
 
     componentDidMount() {
-        // let that = this;
-        // fetch('https://me-api.jsramverk.me')
-        //     .then(function(response) {
-        //         return response.json();
-        //     })
-        //     .then(function(result) {
-        //         console.log(result);
-        //         that.setState({
-        //             message: result.description
-        //         });
-        //     });
+        let that = this;
+        fetch('https://me-api.jespernyhlenjs.me')
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(result) {
+                console.log(result.data);
+                that.setState({
+                    name: result.data.name,
+                    // description: result.data.description,
+                    text: result.data.present
+                });
+            });
         // that.setState({
         //     name: 'Jesper Nyhlén',
         //     description: 'Lite om mig',
@@ -43,9 +45,10 @@ class Me extends Component {
                     </div>
 
                     <div className='home-info'>
-                        <p className='desc'>Jesper Nyhlén</p>
+                        <p className='desc'>{this.state.name}</p>
                         <h1>Lite om mig</h1>
-                        <p>
+                        <p>{this.state.text}</p>
+                        {/* <p>
                             Välkommen till min me-sida för kursen JS-Ramverk.
                             Mitt namn är Jesper Nyhlén och studerar
                             Webbutveckling vid Blekinge Tekniska Högskola.
@@ -55,7 +58,7 @@ class Me extends Component {
                             uppdateras med redovisningar samt annan information
                             gällande detta kursmoment. Uppdateringar kommer
                             ständigt ske, så det är bara att följa med!
-                        </p>
+                        </p> */}
                     </div>
                 </div>
             </main>
