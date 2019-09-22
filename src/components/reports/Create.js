@@ -33,7 +33,8 @@ class Create extends Component {
     handleSubmit = e => {
         e.preventDefault();
 
-        fetch('http://localhost:8333/reports', {
+        // fetch('http://localhost:8333/reports', {
+        fetch('https://me-api.jespernyhlenjs.me/reports', {
             method: 'post',
             body: JSON.stringify({
                 kmom: this.state.report.week,

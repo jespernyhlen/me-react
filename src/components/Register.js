@@ -45,10 +45,9 @@ class Register extends Component {
 
         if (validated === true) {
             this.registerUser();
-            this.setState(initialState());
         }
         if (!validated) {
-            this.setState(initialState());
+            // this.setState(initialState());
         }
         this.setState({
             nameError: validated.nameError,
@@ -60,8 +59,9 @@ class Register extends Component {
     };
 
     registerUser() {
-        // fetch('https://me-api.jespernyhlenjs.me/register', {
-        fetch('http://localhost:8333/register', {
+        // fetch('http://localhost:8333/register', {
+
+        fetch('https://me-api.jespernyhlenjs.me/register', {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -73,10 +73,18 @@ class Register extends Component {
             })
         })
             .then(res => res.json())
-            .then(data => {
-                alert('Registrering lyckades');
-            })
-            .catch(err => console.log(err));
+            .then(response => {
+                if (response.data) {
+                    this.setState(initialState());
+                    this.setState({
+                        success: 'Registrering lyckades, du kan nu logga in'
+                    });
+                } else {
+                    this.setState({
+                        failure: 'Denna E-post är redan registrerad'
+                    });
+                }
+            });
     }
 
     handleReset = e => {
@@ -176,6 +184,8 @@ class Register extends Component {
                                 {this.state.passwordError}
                             </div>
                         </div>
+                        <p className='center succes'>{this.state.success}</p>
+                        <p className='center failure'>{this.state.failure}</p>
 
                         <div className='form-group btns'>
                             <button type='submit' className='btn register'>

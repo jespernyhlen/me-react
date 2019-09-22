@@ -10,8 +10,8 @@ class Edit extends Component {
     }
 
     componentDidMount() {
-        // fetch('https://me-api.jespernyhlenjs.me')
-        fetch('http://localhost:8333/reports/week/' + this.state.week)
+        // fetch('http://localhost:8333/reports/week/' + this.state.week)
+        fetch('https://me-api.jespernyhlenjs.me/' + this.state.week)
             .then(res => res.json())
             .then(response => this.saveReport(response));
     }

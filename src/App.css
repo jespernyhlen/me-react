@@ -235,6 +235,14 @@ code {
     color: #9c5a06;
 }
 
+.succes {
+    color: green;
+}
+
+.failure {
+    color: red;
+}
+
 .center {
     text-align: center;
 }

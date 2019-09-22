@@ -35,7 +35,6 @@ class Login extends Component {
 
         if (validated === true) {
             this.loginUser();
-            this.setState(initialState());
         }
         if (!validated) {
             this.setState(initialState());
@@ -47,9 +46,8 @@ class Login extends Component {
     };
 
     loginUser() {
-        // fetch('https://me-api.jespernyhlenjs.me/login', {
-
-        fetch('http://localhost:8333/login', {
+        // fetch('http://localhost:8333/login', {
+        fetch('https://me-api.jespernyhlenjs.me/login', {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -58,17 +56,19 @@ class Login extends Component {
             })
         })
             .then(res => res.json())
-            .then(data => {
-                localStorage.setItem('token', data.data.token);
-                this.props.login();
-                this.props.history.push('/showreports');
-            })
-            .catch(err => {
-                console.log(err);
-                this.setState({
-                    passwordError:
-                        'Ingen användare med denna E-post/Lösenord finns'
-                });
+            .then(response => {
+                if (response.data) {
+                    this.setState(initialState());
+
+                    localStorage.setItem('token', response.data.token);
+                    this.props.login();
+                    this.props.history.push('/showreports');
+                } else {
+                    this.setState({
+                        failure:
+                            'Ingen användare med denna E-post/Lösenord finns'
+                    });
+                }
             });
     }
 
@@ -117,6 +117,8 @@ class Login extends Component {
                                 {this.state.passwordError}
                             </div>
                         </div>
+                        <p className='center failure'>{this.state.failure}</p>
+
                         <div className='form-group btns'>
                             <button
                                 type='submit'

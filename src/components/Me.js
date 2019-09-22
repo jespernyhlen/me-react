@@ -13,8 +13,9 @@ class Me extends Component {
 
     componentDidMount() {
         let that = this;
-        // fetch('https://me-api.jespernyhlenjs.me')
-        fetch('http://localhost:8333/')
+        // fetch('http://localhost:8333/')
+
+        fetch('https://me-api.jespernyhlenjs.me/')
             .then(function(response) {
                 return response.json();
             })

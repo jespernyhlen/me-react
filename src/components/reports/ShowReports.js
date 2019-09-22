@@ -20,8 +20,8 @@ class ShowReports extends Component {
     }
 
     getReports() {
-        // fetch('https://me-api.jespernyhlenjs.me')
-        fetch('http://localhost:8333/reports')
+        // fetch('http://localhost:8333/reports')
+        fetch('https://me-api.jespernyhlenjs.me/reports')
             .then(res => res.json())
             .then(response => this.saveReports(response));
     }

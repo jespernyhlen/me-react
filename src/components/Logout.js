@@ -20,10 +20,10 @@ class Logout extends Component {
                     <h1 className='center'>Logga ut användare</h1>
 
                     <form onSubmit={this.handleSubmit}>
-                        <div className='form-group btns btn-center'>
+                        <div className='form-group btns'>
                             <button
                                 type='submit'
-                                className='btn register center'
+                                className='btn register btn-center'
                             >
                                 Logga ut
                             </button>

@@ -25,8 +25,8 @@ class Report extends Component {
         let that = this;
 
         fetch(
-            // 'https://me-api.jespernyhlenjs.me/reports/week/' + this.state.kmom
-            'http://localhost:8333/reports/week/' + this.state.kmom
+            // 'http://localhost:8333/reports/week/' + this.state.kmom
+            'https://me-api.jespernyhlenjs.me/reports/week/' + this.state.kmom
         )
             .then(function(response) {
                 return response.json();
