@@ -215,7 +215,6 @@ class DateForm extends Component {
     handleDate = () => {
         var selected_date = this.state.selected_date;
         this.props.onSelectDate(selected_date);
-        console.log('asfas');
     };
 
     render() {

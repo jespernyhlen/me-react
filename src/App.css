@@ -397,6 +397,10 @@ form {
     background: #e4372ae3;
 }
 
+.btn-center {
+    margin: 0 auto;
+}
+
 /******** DATEPICKER *******/
 
 .date-picker {
@@ -529,6 +533,18 @@ form {
 
 .day:focus {
     outline: 1px solid #90d4ffc9;
+}
+
+/******** CRUD **********/
+
+#report-text {
+    width: 100%;
+    min-height: 300px;
+    font-size: 1rem;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 2px solid #ddd;
+    margin: 0.3rem 0;
 }
 
 @media screen and (max-width: 991px) {

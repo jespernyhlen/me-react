@@ -13,24 +13,17 @@ class Me extends Component {
 
     componentDidMount() {
         let that = this;
-        fetch('https://me-api.jespernyhlenjs.me')
+        // fetch('https://me-api.jespernyhlenjs.me')
+        fetch('http://localhost:8333/')
             .then(function(response) {
                 return response.json();
             })
             .then(function(result) {
-                console.log(result.data);
                 that.setState({
                     name: result.data.name,
-                    // description: result.data.description,
-                    text: result.data.present
+                    text: result.data.text
                 });
             });
-        // that.setState({
-        //     name: 'Jesper Nyhlén',
-        //     description: 'Lite om mig',
-        //     message:
-        //         'Hej! Välkommen till min me-sida för kursen JS-Ramverk. Mitt namn är Jesper Nyhlén och studerar Webbutveckling vid Blekinge Tekniska Högskola. Denna plats kommer att vara min bas inom kursen och uppdateras med redovisningar samt annan information gällande detta kursmoment. Uppdateringar kommer ständigt ske, så det är bara att följa med!'
-        // });
     }
 
     render() {

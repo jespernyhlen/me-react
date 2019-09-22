@@ -28,9 +28,8 @@ class Register extends Component {
     componentDidMount() {}
 
     handleChange = e => {
-        const isCheckbox = e.target.type === 'checkbox';
         this.setState({
-            [e.target.name]: isCheckbox ? e.target.checked : e.target.value
+            [e.target.name]: e.target.value
         });
     };
 
@@ -45,8 +44,6 @@ class Register extends Component {
         );
 
         if (validated === true) {
-            alert('Tillfälligt meddelande, din registrering lyckades.');
-            console.log(validated);
             this.registerUser();
             this.setState(initialState());
         }
@@ -63,7 +60,8 @@ class Register extends Component {
     };
 
     registerUser() {
-        fetch('https://me-api.jespernyhlenjs.me/register', {
+        // fetch('https://me-api.jespernyhlenjs.me/register', {
+        fetch('http://localhost:8333/register', {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -75,10 +73,10 @@ class Register extends Component {
             })
         })
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => {
+                alert('Registrering lyckades');
+            })
             .catch(err => console.log(err));
-
-        console.log('Feeetching done');
     }
 
     handleReset = e => {
@@ -140,13 +138,11 @@ class Register extends Component {
                                 Födelsedatum* (Minst 18 år)
                             </label>
                             <DateForm
-                                // value={this.state.selected_date}
                                 onChange={this.handleDate}
                                 data={{
                                     year: this.state.year,
                                     changeYear: this.changeYear.bind(this)
                                 }}
-                                // onSelectDate={this.handleDate}
                             />
                             <div className='invalid-feedback'>
                                 {this.state.yearError}
@@ -180,15 +176,6 @@ class Register extends Component {
                                 {this.state.passwordError}
                             </div>
                         </div>
-                        {/* <div className='form-group'>
-                            <input
-                                type='checkbox'
-                                id='scales'
-                                name='scales'
-                                checked
-                            />
-                            <label for='scales'>Scales</label>
-                        </div> */}
 
                         <div className='form-group btns'>
                             <button type='submit' className='btn register'>

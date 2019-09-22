@@ -14,16 +14,12 @@ const initialState = () => {
 class Login extends Component {
     constructor(props) {
         super(props);
-
         this.state = initialState();
     }
 
-    componentDidMount() {}
-
     handleChange = e => {
-        const isCheckbox = e.target.type === 'checkbox';
         this.setState({
-            [e.target.name]: isCheckbox ? e.target.checked : e.target.value
+            [e.target.name]: e.target.value
         });
     };
 
@@ -38,8 +34,6 @@ class Login extends Component {
         );
 
         if (validated === true) {
-            alert('Tillfälligt meddelande, din registrering lyckades.');
-            console.log(validated);
             this.loginUser();
             this.setState(initialState());
         }
@@ -53,7 +47,9 @@ class Login extends Component {
     };
 
     loginUser() {
-        fetch('https://me-api.jespernyhlenjs.me/login', {
+        // fetch('https://me-api.jespernyhlenjs.me/login', {
+
+        fetch('http://localhost:8333/login', {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -62,10 +58,18 @@ class Login extends Component {
             })
         })
             .then(res => res.json())
-            .then(data => console.log(data))
-            .catch(err => console.log(err));
-
-        console.log('Feeetching done');
+            .then(data => {
+                localStorage.setItem('token', data.data.token);
+                this.props.login();
+                this.props.history.push('/showreports');
+            })
+            .catch(err => {
+                console.log(err);
+                this.setState({
+                    passwordError:
+                        'Ingen användare med denna E-post/Lösenord finns'
+                });
+            });
     }
 
     handleReset = e => {
@@ -79,6 +83,10 @@ class Login extends Component {
             <main id='login'>
                 <div className='main-container register'>
                     <h1 className='center'>Logga in användare</h1>
+                    <p className='desc center'>
+                        {' '}
+                        För att lägga till eller redigera veckorapporter
+                    </p>
 
                     <form
                         onSubmit={this.handleSubmit}
@@ -112,7 +120,7 @@ class Login extends Component {
                         <div className='form-group btns'>
                             <button
                                 type='submit'
-                                className='btn register center'
+                                className='btn register btn-center'
                             >
                                 Logga in
                             </button>
