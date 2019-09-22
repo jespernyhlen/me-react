@@ -48,7 +48,7 @@ class App extends Component {
             loggedInOption = (
                 <li>
                     <Link to='/showreports'>
-                        <i className='fas fa-sign-in-alt'></i>
+                        <i className='fas fa-edit'></i>
                         CRUD
                     </Link>
                 </li>
@@ -99,6 +99,12 @@ class App extends Component {
                                 <Link to='/reports/week/2'>
                                     <i className='fas fa-address-card'></i>Vecka
                                     2
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to='/reports/week/3'>
+                                    <i className='fas fa-address-card'></i>Vecka
+                                    3
                                 </Link>
                             </li>
 
