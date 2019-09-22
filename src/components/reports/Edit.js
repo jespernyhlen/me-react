@@ -11,7 +11,9 @@ class Edit extends Component {
 
     componentDidMount() {
         // fetch('http://localhost:8333/reports/week/' + this.state.week)
-        fetch('https://me-api.jespernyhlenjs.me/' + this.state.week)
+        fetch(
+            'https://me-api.jespernyhlenjs.me/reports/week/' + this.state.week
+        )
             .then(res => res.json())
             .then(response => this.saveReport(response));
     }
@@ -40,7 +42,8 @@ class Edit extends Component {
     handleSubmit = e => {
         e.preventDefault();
 
-        fetch('http://localhost:8333/reports/update', {
+        // fetch('http://localhost:8333/reports/update', {
+        fetch('https://me-api.jespernyhlenjs.me/update', {
             method: 'post',
             body: JSON.stringify({
                 kmom: this.state.report.week,
