@@ -126,6 +126,7 @@ class App extends Component {
                     <Route exact path='/' component={Me} />
                     <Route exact path='/reports/week/1' component={Report} />
                     <Route exact path='/reports/week/2' component={Report} />
+                    <Route exact path='/reports/week/3' component={Report} />
                     <Route exact path='/register' component={Register} />
 
                     <Route

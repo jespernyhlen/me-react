@@ -1,13 +1,5 @@
 import React, { Component } from 'react';
-import Readme from '../README.md';
-import ReportTwo from './ReportTwo.md';
-
 import ReactMarkdown from 'react-markdown';
-
-const kmom = {
-    '1': Readme,
-    '2': ReportTwo
-};
 
 class Report extends Component {
     constructor(props) {
