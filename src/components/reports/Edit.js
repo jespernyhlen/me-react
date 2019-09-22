@@ -43,7 +43,7 @@ class Edit extends Component {
         e.preventDefault();
 
         // fetch('http://localhost:8333/reports/update', {
-        fetch('https://me-api.jespernyhlenjs.me/update', {
+        fetch('https://me-api.jespernyhlenjs.me/reports/update', {
             method: 'post',
             body: JSON.stringify({
                 kmom: this.state.report.week,
