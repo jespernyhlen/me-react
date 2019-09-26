@@ -8,6 +8,11 @@ const initialState = () => {
     return initState;
 };
 
+const apiURL =
+    process.env.NODE_ENV === 'local'
+        ? 'https://me-api.jespernyhlenjs.me/'
+        : 'http://localhost:8333/';
+
 class ShowReports extends Component {
     constructor(props) {
         super(props);
@@ -21,7 +26,7 @@ class ShowReports extends Component {
 
     getReports() {
         // fetch('http://localhost:8333/reports')
-        fetch('https://me-api.jespernyhlenjs.me/reports')
+        fetch(apiURL + 'reports')
             .then(res => res.json())
             .then(response => this.saveReports(response));
     }

@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import DateForm from './DateForm';
 import ValidateForm from './Validate';
 
+const apiURL =
+    process.env.NODE_ENV === 'local'
+        ? 'https://me-api.jespernyhlenjs.me/'
+        : 'http://localhost:8333/';
+
 const initialState = () => {
     let initState = {
         name: '',
@@ -61,7 +66,7 @@ class Register extends Component {
     registerUser() {
         // fetch('http://localhost:8333/register', {
 
-        fetch('https://me-api.jespernyhlenjs.me/register', {
+        fetch(apiURL + 'register', {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

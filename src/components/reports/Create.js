@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 
+const apiURL =
+    process.env.NODE_ENV === 'local'
+        ? 'https://me-api.jespernyhlenjs.me/'
+        : 'http://localhost:8333/';
+
 class Create extends Component {
     constructor(props) {
         super(props);
@@ -34,7 +39,7 @@ class Create extends Component {
         e.preventDefault();
 
         // fetch('http://localhost:8333/reports', {
-        fetch('https://me-api.jespernyhlenjs.me/reports', {
+        fetch(apiURL + 'reports', {
             method: 'post',
             body: JSON.stringify({
                 kmom: this.state.report.week,

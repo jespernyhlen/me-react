@@ -11,6 +11,11 @@ const initialState = () => {
     return initState;
 };
 
+const apiURL =
+    process.env.NODE_ENV === 'local'
+        ? 'https://me-api.jespernyhlenjs.me/'
+        : 'http://localhost:8333/';
+
 class Login extends Component {
     constructor(props) {
         super(props);
@@ -47,7 +52,7 @@ class Login extends Component {
 
     loginUser() {
         // fetch('http://localhost:8333/login', {
-        fetch('https://me-api.jespernyhlenjs.me/login', {
+        fetch(apiURL + 'login', {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

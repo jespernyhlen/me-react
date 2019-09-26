@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import ReactMarkdown from 'react-markdown';
 
+const apiURL =
+    process.env.NODE_ENV === 'local'
+        ? 'https://me-api.jespernyhlenjs.me/'
+        : 'http://localhost:8333/';
+
 class Report extends Component {
     constructor(props) {
         super(props);
@@ -18,7 +23,7 @@ class Report extends Component {
 
         fetch(
             // 'http://localhost:8333/reports/week/' + this.state.kmom
-            'https://me-api.jespernyhlenjs.me/reports/week/' + this.state.kmom
+            apiURL + 'reports/week/' + this.state.kmom
         )
             .then(function(response) {
                 return response.json();

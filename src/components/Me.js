@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import profileImg from '../web-dev2.png';
 
+const apiURL =
+    process.env.NODE_ENV === 'local'
+        ? 'https://me-api.jespernyhlenjs.me/'
+        : 'http://localhost:8333/';
+
 class Me extends Component {
     constructor(props) {
         super(props);
@@ -15,7 +20,7 @@ class Me extends Component {
         let that = this;
         // fetch('http://localhost:8333/')
 
-        fetch('https://me-api.jespernyhlenjs.me/')
+        fetch(apiURL)
             .then(function(response) {
                 return response.json();
             })
