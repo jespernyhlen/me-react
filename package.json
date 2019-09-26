@@ -15,7 +15,7 @@
         "start": "react-scripts start",
         "local": "LOCAL_START_ENV='local' react-scripts start",
         "build": "react-scripts build",
-        "test": "react-scripts test",
+        "test": "mocha test/**/*.js --timeout 10000",
         "eject": "react-scripts eject",
         "deploy": "npm run build && rsync -av build/* admin@134.209.16.134:/var/www/jespernyhlenjs.me/html/"
     },
@@ -33,5 +33,10 @@
             "last 1 firefox version",
             "last 1 safari version"
         ]
+    },
+    "devDependencies": {
+        "mocha": "^4.1.0",
+        "selenium-webdriver": "^3.6.0",
+        "http-server": "^0.11.1"
     }
 }
