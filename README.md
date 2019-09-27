@@ -1,3 +1,7 @@
+[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/jespernyhlen/me-react/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/jespernyhlen/me-react/?branch=master)
+
+[![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/jespernyhlen/me-react/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/jespernyhlen/me-react/?branch=master)
+
 # Readme (English)
 
 ### Get started
