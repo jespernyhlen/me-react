@@ -4,7 +4,6 @@ node_js:
     - 'node'
     - '10'
     - '8'
-    - '6'
 
 sudo: false
 
@@ -12,6 +11,10 @@ git:
     submodules: false
 
 before_script:
+    - wget https://github.com/mozilla/geckodriver/releases/download/v0.24.0/geckodriver-v0.24.0-linux64.tar.gz
+    - mkdir geckodriver
+    - tar -xzf geckodriver-v0.24.0-linux64.tar.gz -C geckodriver
+    - export PATH=$PATH:$PWD/geckodriver
     - npm install
 
 script:
@@ -20,4 +23,3 @@ script:
 after_success:
     - npm run report-coveralls
     - npm run report-codecov
-# asd

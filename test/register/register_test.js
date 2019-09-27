@@ -6,6 +6,7 @@
 const assert = require('assert');
 const test = require('selenium-webdriver/testing');
 const webdriver = require('selenium-webdriver');
+const firefox = require('selenium-webdriver/firefox');
 const By = webdriver.By;
 
 let browser;
@@ -14,12 +15,14 @@ let browser;
 
 // Test suite
 test.describe('Register', function() {
+    this.timeout(0);
+
     test.beforeEach(function(done) {
-        this.timeout(10000);
         browser = new webdriver.Builder()
             .withCapabilities(webdriver.Capabilities.firefox())
+            .setFirefoxOptions(new firefox.Options().headless())
             .build();
-        browser.get('http://localhost:3000/register');
+        browser.get('http://localhost:8082/register');
         done();
     });
 
@@ -38,14 +41,6 @@ test.describe('Register', function() {
         browser.findElement(By.css('h1')).then(function(element) {
             element.getText().then(function(text) {
                 assert.equal(text, target);
-            });
-        });
-    }
-
-    function assertBtn(target) {
-        browser.findElement(By.css('button')).then(function(element) {
-            element.getAttribute('type').then(function(type) {
-                assert.equal(type, target);
             });
         });
     }

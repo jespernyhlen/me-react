@@ -11,11 +11,15 @@
         "react-scripts": "3.1.1",
         "yup": "^0.27.0"
     },
+    "main": null,
+    "directories": {
+        "test": "test"
+    },
     "scripts": {
-        "start": "react-scripts start",
+        "start": "node node_modules/http-server/bin/http-server -p 8082 -a localhost",
         "local": "LOCAL_START_ENV='local' react-scripts start",
         "build": "react-scripts build",
-        "test": "mocha test/**/*.js --timeout 10000",
+        "test": "PORT=8082 react-scripts start & mocha test/**/*.js",
         "eject": "react-scripts eject",
         "deploy": "npm run build && rsync -av build/* admin@134.209.16.134:/var/www/jespernyhlenjs.me/html/"
     },

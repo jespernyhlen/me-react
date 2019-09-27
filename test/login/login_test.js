@@ -6,6 +6,7 @@
 const assert = require('assert');
 const test = require('selenium-webdriver/testing');
 const webdriver = require('selenium-webdriver');
+const firefox = require('selenium-webdriver/firefox');
 const By = webdriver.By;
 
 let browser;
@@ -14,12 +15,14 @@ let browser;
 
 // Test suite
 test.describe('Login', function() {
+    this.timeout(0);
+
     test.beforeEach(function(done) {
-        this.timeout(10000);
         browser = new webdriver.Builder()
             .withCapabilities(webdriver.Capabilities.firefox())
+            .setFirefoxOptions(new firefox.Options().headless())
             .build();
-        browser.get('http://localhost:3000/login');
+        browser.get('http://localhost:8082/login');
         done();
     });
 
@@ -27,12 +30,6 @@ test.describe('Login', function() {
         browser.quit();
         done();
     });
-
-    function goToNavLink(target) {
-        browser.findElement(By.linkText(target)).then(function(element) {
-            element.click();
-        });
-    }
 
     function matchUrl(target) {
         browser.getCurrentUrl().then(function(url) {
@@ -59,7 +56,6 @@ test.describe('Login', function() {
     function assertForm(target) {
         browser.findElement(By.name(target)).then(function(element) {
             element.getAttribute('type').then(function(type) {
-                console.log(type);
                 assert.equal(type, target);
             });
         });

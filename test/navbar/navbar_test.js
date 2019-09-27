@@ -6,6 +6,7 @@
 const assert = require('assert');
 const test = require('selenium-webdriver/testing');
 const webdriver = require('selenium-webdriver');
+const firefox = require('selenium-webdriver/firefox');
 const By = webdriver.By;
 
 let browser;
@@ -14,12 +15,14 @@ let browser;
 
 // Test suite
 test.describe('Navbar', function() {
+    this.timeout(0);
+
     test.beforeEach(function(done) {
-        this.timeout(10000);
         browser = new webdriver.Builder()
             .withCapabilities(webdriver.Capabilities.firefox())
+            .setFirefoxOptions(new firefox.Options().headless())
             .build();
-        browser.get('http://localhost:3000/');
+        browser.get('http://localhost:8082/');
         done();
     });
 
