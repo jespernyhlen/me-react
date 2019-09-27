@@ -1,6 +1,6 @@
-[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/jespernyhlen/me-react/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/jespernyhlen/me-react/?branch=master)
+[![Build Status](https://travis-ci.org/jespernyhlen/me-react.svg?branch=master)](https://travis-ci.org/jespernyhlen/me-react)[![CircleCI](https://circleci.com/gh/jespernyhlen/me-react.svg?style=svg)](https://circleci.com/gh/jespernyhlen/me-react)
 
-[![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/jespernyhlen/me-react/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/jespernyhlen/me-react/?branch=master)
+[![Build Status](https://img.shields.io/travis/jespernyhlen/me-react/master.svg?style=flat-square)](http://travis-ci.org/jespernyhlen/me-react)[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/jespernyhlen/me-react/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/jespernyhlen/me-react/?branch=master)[![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/jespernyhlen/me-react/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/jespernyhlen/me-react/?branch=master)
 
 # Readme (English)
 
