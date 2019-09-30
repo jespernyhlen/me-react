@@ -3,8 +3,8 @@ import ReactMarkdown from 'react-markdown';
 
 const apiURL =
     process.env.NODE_ENV === 'local'
-        ? 'https://me-api.jespernyhlenjs.me/'
-        : 'http://localhost:8333/';
+        ? 'http://localhost:8333/'
+        : 'https://me-api.jespernyhlenjs.me/';
 
 class Report extends Component {
     constructor(props) {

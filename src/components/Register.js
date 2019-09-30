@@ -4,8 +4,8 @@ import ValidateForm from './Validate';
 
 const apiURL =
     process.env.NODE_ENV === 'local'
-        ? 'https://me-api.jespernyhlenjs.me/'
-        : 'http://localhost:8333/';
+        ? 'http://localhost:8333/'
+        : 'https://me-api.jespernyhlenjs.me/';
 
 const initialState = () => {
     let initState = {

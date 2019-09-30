@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 
 const apiURL =
     process.env.NODE_ENV === 'local'
-        ? 'https://me-api.jespernyhlenjs.me/'
-        : 'http://localhost:8333/';
+        ? 'http://localhost:8333/'
+        : 'https://me-api.jespernyhlenjs.me/';
 
 class Create extends Component {
     constructor(props) {
