@@ -107,6 +107,12 @@ class App extends Component {
                                     3
                                 </Link>
                             </li>
+                            <li>
+                                <Link to='/reports/week/4'>
+                                    <i className='fas fa-address-card'></i>Vecka
+                                    4
+                                </Link>
+                            </li>
 
                             {loggedInOption}
                             {loginLogout}
@@ -127,6 +133,7 @@ class App extends Component {
                     <Route exact path='/reports/week/1' component={Report} />
                     <Route exact path='/reports/week/2' component={Report} />
                     <Route exact path='/reports/week/3' component={Report} />
+                    <Route exact path='/reports/week/4' component={Report} />
                     <Route exact path='/register' component={Register} />
 
                     <Route
