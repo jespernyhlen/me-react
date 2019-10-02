@@ -6,6 +6,7 @@ import Report from './components/Report.js';
 import Register from './components/Register.js';
 import Login from './components/Login.js';
 import Logout from './components/Logout.js';
+import Chat from './components/Chat/Chat.js';
 
 import ShowReports from './components/reports/ShowReports.js';
 import Edit from './components/reports/Edit.js';
@@ -116,6 +117,11 @@ class App extends Component {
 
                             {loggedInOption}
                             {loginLogout}
+                            <li>
+                                <Link to='/chat'>
+                                    <i className='fas fa-address-card'></i>Chatt
+                                </Link>
+                            </li>
                         </ul>
                         <div className='nav-footer'>
                             <div className='nav-contacts'>
@@ -135,6 +141,7 @@ class App extends Component {
                     <Route exact path='/reports/week/3' component={Report} />
                     <Route exact path='/reports/week/4' component={Report} />
                     <Route exact path='/register' component={Register} />
+                    <Route exact path='/chat' component={Chat} />
 
                     <Route
                         exact

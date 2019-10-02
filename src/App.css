@@ -543,6 +543,9 @@ form {
     outline: 1px solid #90d4ffc9;
 }
 
+.evenly {
+    justify-content: space-evenly !important;
+}
 /******** CRUD **********/
 
 #report-text {
