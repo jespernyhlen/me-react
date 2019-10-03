@@ -51,7 +51,6 @@ class Chat extends Component {
                 message: this.state.message
             });
             this.setState({ message: '' });
-            this.scrollToBottom();
         };
 
         this.joinChat = e => {
@@ -91,18 +90,21 @@ class Chat extends Component {
 
         const addMessage = data => {
             this.setState({ messages: [...this.state.messages, data] });
+            this.scrollToBottom();
         };
 
         const joinMessage = data => {
             this.setState({
                 messages: [...this.state.messages, data]
             });
+            this.scrollToBottom();
         };
 
         const leaveMessage = data => {
             this.setState({
                 messages: [...this.state.messages, data]
             });
+            this.scrollToBottom();
         };
     }
 
@@ -111,6 +113,7 @@ class Chat extends Component {
     }
 
     scrollToBottom = () => {
+        console.log(this.mesRef);
         this.mesRef.current.scrollTop = this.mesRef.current.scrollHeight;
     };
     render() {
