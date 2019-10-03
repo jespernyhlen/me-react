@@ -19,7 +19,6 @@
         "test": "test"
     },
     "scripts": {
-        "start-server": "nodemon server.js",
         "start": "react-scripts start",
         "local": "LOCAL_START_ENV='local' react-scripts start",
         "build": "react-scripts build",

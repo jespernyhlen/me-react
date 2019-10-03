@@ -11,21 +11,53 @@ class Chat extends Component {
             message: '',
             messages: []
         };
+        this.mesRef = React.createRef();
 
-        this.socket = io('localhost:8300');
+        this.socket = io('https://socket-server.jespernyhlenjs.me');
+        // this.socket = io('http://localhost:8300');
+
+        this.getTime = () => {
+            let today = new Date();
+            let months = [
+                'Jan',
+                'Feb',
+                'Mar',
+                'Apr',
+                'May',
+                'Jun',
+                'Jul',
+                'Aug',
+                'Sep',
+                'Oct',
+                'Nov',
+                'Dec'
+            ];
+            let month = months[today.getMonth()];
+            let day = ('0' + today.getDate()).slice(-2);
+
+            let time =
+                ('0' + today.getHours()).slice(-2) +
+                ':' +
+                ('0' + today.getMinutes()).slice(-2);
+
+            return month + ' ' + day + ' ' + time;
+        };
 
         this.sendMessage = e => {
             e.preventDefault();
             this.socket.emit('SEND_MESSAGE', {
-                author: this.state.username,
+                time: this.getTime(),
+                author: ' ' + this.state.username,
                 message: this.state.message
             });
             this.setState({ message: '' });
+            this.scrollToBottom();
         };
 
         this.joinChat = e => {
             e.preventDefault();
             this.socket.emit('JOIN_CHAT', {
+                time: this.getTime(),
                 message: this.state.username + ' has joined the chat'
             });
             this.setState({
@@ -36,6 +68,7 @@ class Chat extends Component {
         this.leaveChat = e => {
             e.preventDefault();
             this.socket.emit('LEAVE_CHAT', {
+                time: this.getTime(),
                 message: this.state.username + ' has left the chat'
             });
             this.setState({
@@ -72,6 +105,14 @@ class Chat extends Component {
             });
         };
     }
+
+    componentDidMount() {
+        this.scrollToBottom();
+    }
+
+    scrollToBottom = () => {
+        this.mesRef.current.scrollTop = this.mesRef.current.scrollHeight;
+    };
     render() {
         return (
             <main id='chat'>
@@ -81,13 +122,16 @@ class Chat extends Component {
                         {' '}
                         Skriv in ett användarnamn för att delta i chatten
                     </p>
-                    <div className='messages'>
+                    <div className='messages' ref={this.mesRef}>
                         {this.state.messages.map(message => {
                             return (
-                                <div>
+                                <div className='message-div'>
+                                    <p className='message-time'>
+                                        {message.time}
+                                    </p>
                                     {message.author}
                                     {message.author ? ':' : null}{' '}
-                                    {message.message}
+                                    <strong> {message.message}</strong>
                                 </div>
                             );
                         })}
@@ -98,6 +142,11 @@ class Chat extends Component {
                                 type='text'
                                 placeholder='Username'
                                 value={this.state.username}
+                                onKeyDown={e => {
+                                    if (e.keyCode == 13) {
+                                        this.joinChat(e);
+                                    }
+                                }}
                                 onChange={e =>
                                     this.setState({
                                         username: e.target.value
@@ -113,6 +162,11 @@ class Chat extends Component {
                                 placeholder='Message'
                                 className='form-control'
                                 value={this.state.message}
+                                onKeyDown={e => {
+                                    if (e.keyCode == 13) {
+                                        this.sendMessage(e);
+                                    }
+                                }}
                                 onChange={e =>
                                     this.setState({
                                         message: e.target.value
