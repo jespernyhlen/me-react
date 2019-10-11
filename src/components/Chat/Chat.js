@@ -109,6 +109,8 @@ class Chat extends Component {
     }
 
     componentDidMount() {
+        console.log('heeej1');
+
         fetch(apiURL + 'list', {
             method: 'get',
             headers: {
