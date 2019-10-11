@@ -109,7 +109,12 @@ class Chat extends Component {
     }
 
     componentDidMount() {
-        fetch(apiURL + 'list')
+        fetch(apiURL + 'list', {
+            method: 'get',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
             .then(res => res.json())
             .then(response => {
                 this.setState({
