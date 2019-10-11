@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import ReactMarkdown from 'react-markdown';
 
 const apiURL =
@@ -6,56 +7,46 @@ const apiURL =
         ? 'http://localhost:8333/'
         : 'https://me-api.jespernyhlenjs.me/';
 
-class Report extends Component {
-    constructor(props) {
-        super(props);
-        let location = this.props.location.pathname.split('/')[3];
-        this.state = {
-            // // questions: [],
-            kmom: location,
-            githubURL: 'https://github.com/jespernyhlen/me-react',
-            readmeMarkdown: ''
+const Report = props => {
+    const [isLoading, setIsLoading] = useState(false);
+    const [readmeMarkdown, setreadmeMarkdown] = useState('');
+    const githubURL = useState('https://github.com/jespernyhlen/me-react');
+
+    useEffect(() => {
+        const fetchReports = async () => {
+            setIsLoading(true);
+            try {
+                const result = await axios.get(
+                    `${apiURL}reports/week/${props.match.params.id}`
+                );
+                setreadmeMarkdown(result.data.data.text);
+            } catch (error) {
+                console.log(error);
+            }
+            setIsLoading(false);
         };
-    }
+        // code to run on component mount
+        console.log(props.match.params.id);
+        fetchReports();
+    }, [props]);
 
-    componentDidMount() {
-        let that = this;
-
-        fetch(
-            // 'http://localhost:8333/reports/week/' + this.state.kmom
-            apiURL + 'reports/week/' + this.state.kmom
-        )
-            .then(function(response) {
-                return response.json();
-            })
-            .then(function(result) {
-                that.setState({
-                    readmeMarkdown: result.data.text
-                });
-            });
-    }
-
-    render() {
-        return (
-            <main id='report'>
-                <div className='main-container report'>
-                    <div className='report-text'>
-                        {/* <h1>Readme (English)</h1> */}
-                        <ReactMarkdown source={this.state.readmeMarkdown} />
-                        {/* {renderedQuestions} */}
-                    </div>
-                    <div className='report-github'>
-                        <h1>Github Repo</h1>
-                        <p>
-                            Här finner du en{' '}
-                            <a href={this.state.githubURL}>länk</a> till github
-                            repot.{' '}
-                        </p>
-                    </div>
+    return (
+        <main id='report'>
+            <div className='main-container report'>
+                <div className='report-text'>
+                    {isLoading ? null : (
+                        <ReactMarkdown source={readmeMarkdown} />
+                    )}
                 </div>
-            </main>
-        );
-    }
-}
-
+                <div className='report-github'>
+                    <h1>Github Repo</h1>
+                    <p>
+                        Här finner du en <a href={githubURL}>länk</a> till
+                        github repot.{' '}
+                    </p>
+                </div>
+            </div>
+        </main>
+    );
+};
 export default Report;
