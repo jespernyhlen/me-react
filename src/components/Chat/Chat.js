@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import io from 'socket.io-client';
 import { insertMessage, getMessages } from './ChatAPI';
 
-const apiURL = 'https://me-api.jespernyhlenjs.me';
+const apiURL = 'https://me-api.jespernyhlenjs.me/';
 
 class Chat extends Component {
     constructor(props) {
