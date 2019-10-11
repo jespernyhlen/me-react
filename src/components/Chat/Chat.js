@@ -117,6 +117,8 @@ class Chat extends Component {
         })
             .then(res => res.json())
             .then(response => {
+                console.log('heeej');
+
                 this.setState({
                     messages: response
                 });

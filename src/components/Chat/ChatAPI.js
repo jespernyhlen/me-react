@@ -11,7 +11,6 @@ const apiURL =
 // const path = require('path');
 
 export function insertMessage(docs) {
-    console.log(docs);
     // fetch('http://localhost:8333/reports', {
     fetch(apiURL + 'insert', {
         method: 'post',
