@@ -3,6 +3,7 @@ import io from 'socket.io-client';
 import { insertMessage, getMessages } from './ChatAPI';
 
 const apiURL = 'https://me-api.jespernyhlenjs.me/';
+// const apiURL = 'http://localhost:8333/';
 
 class Chat extends Component {
     constructor(props) {
@@ -16,7 +17,7 @@ class Chat extends Component {
         };
         this.mesRef = React.createRef();
 
-        this.socket = io('https://socket-server.jespernyhlenjs.me');
+        this.socket = io('https://socket-server.jespernyhlenjs.me/');
         // this.socket = io('http://localhost:8300');
         this.getTime = () => {
             let today = new Date();
@@ -65,6 +66,7 @@ class Chat extends Component {
                 username: this.state.username,
                 message: `${this.state.username} has joined the chat`
             };
+
             this.socket.emit('JOIN_CHAT', data);
 
             insertMessage({
@@ -97,8 +99,9 @@ class Chat extends Component {
         };
 
         this.socket.on('NEW_MESSAGE', function(data) {
-            addMessage(data);
             // console.log(data);
+
+            addMessage(data);
         });
 
         const addMessage = data => {
@@ -108,33 +111,19 @@ class Chat extends Component {
         };
     }
 
-    componentDidMount() {
-        console.log('heeej1');
-
-        fetch(apiURL + 'list', {
-            method: 'get',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-            .then(res => res.json())
-            .then(response => {
-                console.log('heeej');
-
-                this.setState({
-                    messages: response
-                });
-            });
+    async componentDidMount() {
+        let messageHistory = await getMessages();
+        this.setState({
+            messages: messageHistory
+        });
     }
 
     componentDidUpdate() {
-        // console.log(this.state.messages);
-
         this.scrollToBottom();
     }
 
     scrollToBottom = () => {
-        if (this.mesRef.current.scrollTop !== null) {
+        if (this.mesRef.current) {
             this.mesRef.current.scrollTop = this.mesRef.current.scrollHeight;
         }
 
