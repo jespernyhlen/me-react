@@ -85,6 +85,11 @@ class Report extends Component {
                             <i className='fas fa-address-card'></i>Vecka 4
                         </Link>
                     </li>
+                    <li>
+                        <Link to='/reports/week/10'>
+                            <i className='fas fa-address-card'></i>Projekt
+                        </Link>
+                    </li>
 
                     {loggedInOption}
                     {loginLogout}
